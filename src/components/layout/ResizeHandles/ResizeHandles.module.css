@@ -1,0 +1,57 @@
+.handle {
+  position: absolute;
+  z-index: 50;
+}
+.n,
+.s {
+  right: 8px;
+  left: 8px;
+  height: 4px;
+  cursor: ns-resize;
+}
+.e,
+.w {
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  cursor: ew-resize;
+}
+.n {
+  top: 0;
+}
+.s {
+  bottom: 0;
+}
+.e {
+  right: 0;
+}
+.w {
+  left: 0;
+}
+.nw,
+.ne,
+.sw,
+.se {
+  width: 8px;
+  height: 8px;
+}
+.nw {
+  top: 0;
+  left: 0;
+  cursor: nwse-resize;
+}
+.se {
+  right: 0;
+  bottom: 0;
+  cursor: nwse-resize;
+}
+.ne {
+  top: 0;
+  right: 0;
+  cursor: nesw-resize;
+}
+.sw {
+  bottom: 0;
+  left: 0;
+  cursor: nesw-resize;
+}

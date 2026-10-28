@@ -1,0 +1,109 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 780px;
+  padding: 8px 32px 32px;
+  margin: 0 auto;
+}
+.hero {
+  margin-bottom: var(--space-1);
+}
+.title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--color-muted);
+}
+.languages {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-2);
+}
+.select {
+  height: 38px;
+  padding: 0 36px 0 14px;
+  font-weight: 500;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' fill='none' stroke='%23909090' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-md);
+}
+.select:focus-visible {
+  border-color: var(--color-accent);
+  outline: 1px solid var(--color-accent);
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition);
+}
+.card:focus-within {
+  border-color: var(--color-accent);
+}
+.textarea {
+  min-height: 150px;
+  padding: 16px 18px 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  resize: none;
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px 12px 18px;
+}
+.counter {
+  color: var(--color-muted);
+  font-size: 12px;
+}
+.resultHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 14px 18px 0;
+  color: var(--color-accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+.detected {
+  color: var(--color-muted);
+  font-weight: 400;
+}
+.resultBody {
+  min-height: 80px;
+  padding: 8px 18px;
+}
+.output,
+.muted,
+.error {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.output {
+  user-select: text;
+}
+.muted {
+  color: var(--color-muted);
+}
+.error {
+  color: var(--color-danger);
+}

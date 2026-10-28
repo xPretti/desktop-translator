@@ -1,0 +1,21 @@
+.button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-md);
+  opacity: 0.85;
+  transition: background var(--transition), opacity var(--transition);
+}
+.button:hover:not(:disabled) {
+  background: var(--titlebar-hover, var(--color-hover));
+  opacity: 1;
+}
+.button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}

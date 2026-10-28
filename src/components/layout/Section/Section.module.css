@@ -1,0 +1,21 @@
+.section {
+  margin-bottom: var(--space-5);
+}
+.header {
+  margin-bottom: var(--space-2);
+}
+.title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.description {
+  margin: 2px 0 0;
+  color: var(--color-muted);
+  font-size: 12px;
+}
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

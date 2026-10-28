@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Permissões mínimas: as janelas apenas escutam eventos e chamam os comandos do app.",
+  "windows": ["main", "popup", "floating-button"],
+  "permissions": ["core:event:allow-listen", "core:event:allow-unlisten"]
+}

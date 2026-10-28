@@ -1,0 +1,78 @@
+.bar {
+  display: flex;
+  flex: none;
+  align-items: center;
+  height: 36px;
+  color: var(--titlebar-fg, var(--color-text));
+  background: var(--titlebar-bg, transparent);
+  user-select: none;
+}
+.title {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  height: 100%;
+  padding-left: 14px;
+}
+.text {
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.75;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-right: 6px;
+}
+.controls {
+  display: flex;
+  height: 100%;
+}
+.control {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 100%;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+}
+.control:hover {
+  background: var(--titlebar-hover, var(--color-hover));
+}
+.close:hover {
+  color: #ffffff;
+  background: #e81123;
+}
+
+/* Variante do pop-up: parece parte do conteúdo, com botões pequenos e arredondados. */
+.compact {
+  height: 34px;
+}
+.compact .title {
+  padding-left: var(--popup-padding, 14px);
+}
+.compact .controls {
+  align-items: center;
+  height: auto;
+  padding-right: 8px;
+  gap: 2px;
+}
+.compact .control {
+  width: 28px;
+  height: 26px;
+  border-radius: 6px;
+  opacity: 0.8;
+}
+.compact .control:hover {
+  opacity: 1;
+}
+.compact .close:hover {
+  background: #e81123;
+}

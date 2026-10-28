@@ -1,0 +1,38 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 56px;
+  padding: 10px 16px;
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-md);
+}
+.text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.title {
+  font-size: 14px;
+}
+.description {
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+.error {
+  color: var(--color-danger);
+  font-size: 12px;
+}
+.control {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  width: 240px;
+}

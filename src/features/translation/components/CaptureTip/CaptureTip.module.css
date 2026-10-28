@@ -1,0 +1,48 @@
+.tip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 12px 16px;
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+}
+.chip {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  background: var(--color-hover);
+  border-radius: 999px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 50%;
+}
+.ok .dot {
+  color: var(--color-success);
+}
+.warn .dot {
+  color: var(--color-warning);
+}
+.off .dot {
+  color: var(--color-muted);
+}
+.text {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+.kbd {
+  padding: 1px 6px;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 12px;
+  background: var(--color-hover);
+  border: 1px solid var(--color-card-border);
+  border-radius: 4px;
+}

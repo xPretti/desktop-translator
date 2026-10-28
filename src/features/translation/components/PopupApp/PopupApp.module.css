@@ -1,0 +1,15 @@
+/* O pop-up visível sempre ocupa toda a janela. */
+.stage {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Cópia usada para medir o tamanho natural do conteúdo (fora da tela, sem interação). */
+.measure {
+  position: fixed;
+  top: 0;
+  left: -100000px;
+  width: max-content;
+  pointer-events: none;
+  visibility: hidden;
+}
