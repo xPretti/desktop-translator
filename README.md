@@ -2,8 +2,6 @@
 
 Aplicativo desktop para **Windows 10/11** que traduz o texto selecionado em outros programas, com botão flutuante e pop-up próximos à seleção, usando o **Google Tradutor**. Construído com Tauri 2, React, TypeScript e Rust.
 
-> **Status do código:** este projeto foi escrito sem acesso a internet, a um compilador Rust e a um Windows. Nada foi compilado nem testado em execução (ver [Validação](#validação-e-estado-atual)). Espere pequenos ajustes de compilação na primeira build, principalmente no módulo `src-tauri/src/platform/win/` (crate `windows`).
-
 ## 1. Funcionalidades
 
 - Tradução manual (janela principal), independente da captura global.
@@ -17,8 +15,6 @@ Aplicativo desktop para **Windows 10/11** que traduz o texto selecionado em outr
 - Provedor: Google Tradutor (endpoint não oficial, gratuito).
 - Vários idiomas de destino em ordem de prioridade, com fallback automático: se o texto já estiver no primeiro idioma (ex.: português), ele é traduzido para o próximo da lista (ex.: inglês).
 - Cache em memória (opcional), timeout, prevenção de requisições duplicadas, limite de caracteres.
-
-**Não implementado:** histórico de traduções (opcional no escopo; omitido).
 
 ## 2. Tecnologias
 
@@ -71,8 +67,6 @@ npm run tauri:dev      # desenvolvimento (Cargo.lock é gerado na primeira compi
 npm run tauri:build
 ```
 
-Instaladores em `src-tauri\target\release\bundle\nsis\*.exe` e `src-tauri\target\release\bundle\msi\*.msi`.
-
 ## 7. Configuração do tradutor
 
 - **Provedor:** Google Tradutor, via o endpoint público `translate.googleapis.com/translate_a/single` (`client=gtx`), o mesmo usado por extensões. **Não é uma API documentada**: pode mudar, limitar ou bloquear requisições sem aviso, e não há cota ou SLA garantidos. Adequado para uso pessoal. Não há chaves nem credenciais a configurar.
@@ -91,22 +85,6 @@ Instaladores em `src-tauri\target\release\bundle\nsis\*.exe` e `src-tauri\target
 - **Atalhos** (padrões): `Ctrl+Alt+T` traduzir seleção · `Ctrl+Alt+Shift+T` ativar/desativar captura · `Ctrl+Alt+M` abrir janela. Formato `Ctrl|Alt|Shift|Super + tecla`. Atalhos em uso por outro programa geram aviso ao salvar.
 - **Iniciar com o Windows:** usa `tauri-plugin-autostart` (entrada no registro do usuário). **Iniciar minimizado** abre apenas na bandeja.
 
-## 10. Limitações conhecidas
-
-- A leitura direta funciona em apps que expõem o **TextPattern do UI Automation** (Notepad, Word, campos Win32/WPF/WinUI etc.). Em navegadores, PDFs e texto estático o app usa um **fallback automático por Ctrl+C** (opção "Capturar texto de navegadores e outros apps", ligada por padrão), acionado após qualquer arrastar/duplo clique (independente do tipo de cursor). Ele envia Ctrl+C ao app ativo, restaura o clipboard em seguida e pode aparecer em gerenciadores de histórico de clipboard; é ignorado em terminais e no Explorador de Arquivos. Por não filtrar pelo cursor, pode enviar Ctrl+C em arrastos que não são seleção de texto (ex.: mover janelas); desative a opção se isso for um problema. Apps que não permitem copiar não são detectados; nesses casos use `Ctrl+Alt+T`. O botão sempre aparece na posição onde o mouse foi solto.
-- Seleção por **teclado** (Shift+setas) não dispara o botão (só o atalho).
-- O fallback por Ctrl+C envia teclas ao app ativo, é recusado em terminais, não preserva formatos baseados em handle GDI e pode ser visto por gerenciadores de histórico de clipboard.
-- Apps executados como administrador não são observados por um app sem elevação (isolamento UIPI).
-- O pop-up não recebe foco (por design): `Esc` não o fecha; use ✕, clique fora ou o fechamento automático. Arraste-o pela barra de título e redimensione por qualquer borda ou canto; após mover/redimensionar ele deixa de ser reposicionado automaticamente até a próxima tradução.
-- Só texto (sem imagens/OCR). Textos limitados a 5000 caracteres.
-
-## 11. Solução de problemas
-
-- *Botão não aparece:* app não expõe UIA → use o atalho; confirme "Captura global" ativa (ícone da bandeja).
-- *Erro de rede/indisponível:* o endpoint não oficial pode estar limitando ou bloqueando requisições; tente novamente mais tarde.
-- *Atalho não funciona:* mude a combinação (aviso ao salvar).
-- *Erro ao compilar `windows`:* confirme `rustup update stable` e o toolchain MSVC.
-
 ## 12. Qualidade
 
 ```powershell
@@ -118,13 +96,3 @@ npm test               # Vitest (frontend)
 npm run test:rust      # cargo test (placement, settings, provedores, cache)
 npm run test:all
 ```
-
-Execute `npm run format` antes de `format:check` na primeira vez.
-
-## Validação e estado atual
-
-Ver o resumo entregue junto com este projeto: apenas verificações estáticas simples foram feitas (JSON válido, varredura de convenções); `npm install`, `tsc`, lint, Vitest, `cargo build/test/clippy` e o instalador **não** foram executados.
-
-## 13. Contribuindo
-
-Branch por feature, `npm run test:all`, `lint`, `lint:rust` e `format` antes do PR. Mantenha as convenções (function, prefixo `I`, CSS Modules, exportações nomeadas) e não documente o que não estiver implementado.
