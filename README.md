@@ -2,7 +2,7 @@
 
 Aplicativo desktop para **Windows 10/11** que traduz o texto selecionado em outros programas, com botão flutuante e pop-up próximos à seleção, usando o **Google Tradutor**. Construído com Tauri 2, React, TypeScript e Rust.
 
-## 1. Funcionalidades
+## Funcionalidades
 
 - Tradução manual (janela principal), independente da captura global.
 - Captura global de seleção: hook de mouse (somente eventos, sem polling) + **UI Automation** para ler texto e posição; o botão flutuante aparece junto ao fim da seleção.
@@ -16,11 +16,20 @@ Aplicativo desktop para **Windows 10/11** que traduz o texto selecionado em outr
 - Vários idiomas de destino em ordem de prioridade, com fallback automático: se o texto já estiver no primeiro idioma (ex.: português), ele é traduzido para o próximo da lista (ex.: inglês).
 - Cache em memória (opcional), timeout, prevenção de requisições duplicadas, limite de caracteres.
 
-## 2. Tecnologias
+## Imagens:
+
+<p align="center">
+  <img src="./public/img1.png" width="25%" alt="Imagem 1" />
+  <img src="./public/img2.png" width="25%" alt="Imagem 2" />
+  <img src="./public/img3.png" width="25%" alt="Imagem 2" />
+  <img src="./public/img4.png" width="25%" alt="Imagem 2" />
+</p>
+
+## Tecnologias
 
 Tauri 2 · React 19 · TypeScript (strict) · Vite 6 · CSS Modules · Rust (crate `windows` 0.58, `reqwest` com rustls) · Vitest · ESLint 9 · Prettier.
 
-## 3. Arquitetura
+## Arquitetura
 
 ```text
 src/                       Frontend (organizado por feature)
@@ -44,7 +53,7 @@ O mesmo bundle React serve às 3 janelas (`main`, `popup`, `floating-button`), e
 
 **Coordenadas e DPI:** o UI Automation e o Tauri usam pixels físicos (o app é per-monitor DPI aware). O posicionamento (`placement.rs`) trabalha só em pixels físicos; tamanhos lógicos do CSS são multiplicados pela escala do monitor (`GetDpiForMonitor`) e a área útil vem de `GetMonitorInfoW` (exclui a barra de tarefas).
 
-## 4. Pré-requisitos (Windows 10/11)
+## Pré-requisitos (Windows 10/11)
 
 1. **Node.js 20+** (LTS) com npm: <https://nodejs.org>.
 2. **Rust estável** via rustup (<https://rustup.rs>), toolchain `stable-x86_64-pc-windows-msvc`.
@@ -54,38 +63,38 @@ O mesmo bundle React serve às 3 janelas (`main`, `popup`, `floating-button`), e
 
 Guia oficial: <https://v2.tauri.app/start/prerequisites/>.
 
-## 5. Instalação e execução
+## Instalação e execução
 
 ```powershell
 npm install            # gera package-lock.json (versione-o)
 npm run tauri:dev      # desenvolvimento (Cargo.lock é gerado na primeira compilação)
 ```
 
-## 6. Build de produção
+## Build de produção
 
 ```powershell
 npm run tauri:build
 ```
 
-## 7. Configuração do tradutor
+## Configuração do tradutor
 
 - **Provedor:** Google Tradutor, via o endpoint público `translate.googleapis.com/translate_a/single` (`client=gtx`), o mesmo usado por extensões. **Não é uma API documentada**: pode mudar, limitar ou bloquear requisições sem aviso, e não há cota ou SLA garantidos. Adequado para uso pessoal. Não há chaves nem credenciais a configurar.
 - **Idiomas de destino (Configurações → Tradução):** lista de 1 a 5 idiomas em ordem de prioridade. O texto é traduzido para o primeiro idioma; se o idioma detectado já for esse (ex.: o texto já está em português), usa-se o próximo da lista. Se a origem for fixa (não "Detectar idioma"), destinos iguais à origem são ignorados. Se o texto estiver em todos os idiomas da lista, devolve-se a tradução para o primeiro. Na tela inicial, escolher um destino o torna o principal.
 - A arquitetura mantém um contrato de provedor (`TranslationProvider`) para adicionar outros no futuro.
 
-## 8. Privacidade
+## Privacidade
 
 - O texto traduzido (selecionado ou digitado) é **enviado ao Google** (HTTPS). Não selecione conteúdo que não possa ser enviado a terceiros.
 - Nada é gravado em disco além das configurações. O cache é só em memória. Textos não são registrados em logs. Sem telemetria.
 - A captura lê a seleção apenas após um gesto de mouse (arrastar/duplo clique) ou o atalho; campos de senha são ignorados; o clipboard é restaurado no fallback.
 
-## 9. Personalização, atalhos e inicialização
+## Personalização, atalhos e inicialização
 
 - **Aparência/posição:** Configurações → Aparência e Posicionamento (tema, tamanhos, cores hex, fonte, raio, opacidade, lado preferido, deslocamentos, distâncias, margem, comportamento sem espaço). Cores vazias seguem o tema. Aplicado imediatamente via variáveis CSS.
 - **Atalhos** (padrões): `Ctrl+Alt+T` traduzir seleção · `Ctrl+Alt+Shift+T` ativar/desativar captura · `Ctrl+Alt+M` abrir janela. Formato `Ctrl|Alt|Shift|Super + tecla`. Atalhos em uso por outro programa geram aviso ao salvar.
 - **Iniciar com o Windows:** usa `tauri-plugin-autostart` (entrada no registro do usuário). **Iniciar minimizado** abre apenas na bandeja.
 
-## 12. Qualidade
+## Comandos
 
 ```powershell
 npm run typecheck      # tsc --noEmit
