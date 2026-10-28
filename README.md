@@ -18,12 +18,15 @@ Aplicativo desktop para **Windows 10/11** que traduz o texto selecionado em outr
 
 ## Imagens:
 
-<p align="center">
-  <img src="./public/img1.png" width="50%" alt="Imagem 1" />
-  <img src="./public/img2.png" width="50%" alt="Imagem 2" />
-  <img src="./public/img3.png" width="50%" alt="Imagem 3" />
-  <img src="./public/img4.png" width="50%" alt="Imagem 4" />
-</p>
+<details>
+  <summary><b>Clique aqui para ver a resposta/spoiler</b></summary>
+   <p align="center">
+      <img src="./public/img1.png" alt="Imagem 1" />
+      <img src="./public/img2.png" alt="Imagem 2" />
+      <img src="./public/img3.png" alt="Imagem 3" />
+      <img src="./public/img4.png" alt="Imagem 4" />
+   </p>
+</details>
 
 ## Tecnologias
 
