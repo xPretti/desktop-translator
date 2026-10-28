@@ -19,7 +19,8 @@ Aplicativo desktop para **Windows 10/11** que traduz o texto selecionado em outr
 ## Imagens:
 
 <details>
-  <summary><b>Clique aqui para ver a resposta/spoiler</b></summary>
+  <summary><b>Clique para ver todas as imagens</b></summary>
+  <br/>
    <p align="center">
       <img src="./public/img1.png" alt="Imagem 1" />
       <img src="./public/img2.png" alt="Imagem 2" />
